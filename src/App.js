@@ -1,9 +1,14 @@
 import React from 'react'
-import './App.css';
-import ImageStack from './components/ImageStack'
-import {Grid, Row, Col} from 'react-bootstrap'
-import Formulario from './components/Formulario'
 import {connect} from 'react-redux'
+import {Grid, Row, Col} from 'react-bootstrap'
+
+import Formulario from './components/Formulario'
+import ImageStack from './components/ImageStack' 
+import Precio from './components/Precio'
+
+import './App.css';
+
+
 
 const App=({imagenes,config,piezas})=> (
   <Grid fluid className="App">
@@ -23,11 +28,5 @@ const App=({imagenes,config,piezas})=> (
     </Row>
   </Grid>
 )
-const Precio = ({modelo, config})=>{
-  const precio = Object.keys(config).reduce((acc,pieza)=> {
-    return acc + parseInt(modelo[pieza].filter(item => item.id === config[pieza])[0].precio,10)
-  },0) + "€"
-  return <Row> <h4> Precio: {precio}</h4> </Row>
-}
 
 export default connect(state=>state)(App);
