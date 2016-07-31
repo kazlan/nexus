@@ -1,21 +1,13 @@
 
-import React, {Component} from 'react'
+import React from 'react'
 // Props:
-//   status: string[], boolena
-class ImageStack extends Component {
-    render() {
-        return (
-            <div>
-                <img src={"img/" + this.props.imagenes.bota} className="stack"/>
-                <img src={"img/" + this.props.imagenes.guia} className="stack"/>
-                <img src={"img/" + this.props.imagenes.ruedaTras} className="stack"/>
-                <img src={"img/" + this.props.imagenes.ruedaMed} className="stack"/>
-                <img src={"img/" + this.props.imagenes.ruedaDel} className="stack"/>
-                
-            </div>
-        );
-    }
-}
-
+//   imagenes:  string[] ej. ["img1.png", "img2.png","lerele.png"]
+const ImageStack = ({imagenes})=> (
+    <div>
+        {Object.keys(imagenes).map( (imagen,idx)=>
+            <img src={"./img/"+imagenes[imagen]} key={idx} className="stack" alt={imagenes[imagen]} />)
+        }
+    </div>
+)
 
 export default ImageStack
