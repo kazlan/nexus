@@ -18,6 +18,10 @@ const initialState = {
         bota: [
           {id: "Bota Roja", img: "botaRoja.png", precio: "40"}
         ],
+        guia: [
+          {id: "guia roja", img: "guiaRoja.png", precio: "20"},
+          {id: "guia azul", img: "guiaAzul.png", precio: "25"}
+        ],
         ruedaTras: [
           {id: "Rueda Azul", img: "ruedaAzulTras.png", precio: "10"},
           {id: "Rueda Roja", img: "ruedaRojaTras.png", precio: "12"}
@@ -29,10 +33,6 @@ const initialState = {
         ruedaDel: [
           {id: "Rueda Azul", img: "ruedaAzulDel.png", precio: "10"},
           {id: "Rueda Roja", img: "ruedaRojaDel.png", precio: "12"}
-          ],
-          guia: [
-            {id: "guia roja", img: "guiaRoja.png", precio: "20"},
-            {id: "guia azul", img: "guiaAzul.png", precio: "25"}
           ]
       }
     }
@@ -43,11 +43,11 @@ const configurator = (state=initialState, {type, payload})=>{
       case MODIFY_PIEZA:
         const {pieza, item} = payload
         const img = state.piezas[pieza].filter(x=> x.id === item)[0].img
-        const config = Object.assign({}, state.config, {[pieza]: item})
-        const imagenes = Object.assign({}, state.imagenes,{[pieza]: img})
-        console.log(state.config,state.imagenes)
-        return Object.assign({}, state, {config,imagenes})
-        
+        return Object.assign({}, state, {
+          config: Object.assign({}, state.config, {[pieza]: item}),
+          imagenes: Object.assign({}, state.imagenes,{[pieza]: img})
+          })
+
       default:
           return state
     }

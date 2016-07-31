@@ -5,11 +5,6 @@ import {Grid, Row, Col} from 'react-bootstrap'
 import Formulario from './components/Formulario'
 import {connect} from 'react-redux'
 
-const  mapStateToProps = (state)=>{
-    console.log("new state: ", state)
-    return state
-}
-
 const App=({imagenes,config,piezas})=> (
   <Grid fluid className="App">
     <Row className="App-header">
@@ -35,4 +30,4 @@ const Precio = ({modelo, config})=>{
   return <Row> <h4> Precio: {precio}</h4> </Row>
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(state=>state)(App);

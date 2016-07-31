@@ -12,7 +12,6 @@ const  mapStateToProps = (state)=>{
 const mapDispatchToProps = (dispatch)=>{
     return {
         onSelectChange: (pieza, item)=> {
-            console.log(">Dispatch: ", pieza, item)
             dispatch(modify_pieza(pieza,item))
         }
     }
