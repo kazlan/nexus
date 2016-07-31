@@ -1,4 +1,4 @@
-import { MODIFY_PIEZA } from '../actions/configurator'
+import { INIT_FETCH, FETCH_OK, MODIFY_PIEZA } from '../actions/configurator'
 const initialState = {
       imagenes: {
         bota: "botaRoja.png",
@@ -39,6 +39,14 @@ const initialState = {
 
 const configurator = (state=initialState, {type, payload})=>{
     switch(type){
+
+      case INIT_FETCH:
+        console.log('fetch initiated')
+        return state
+
+      case FETCH_OK:
+        console.log('fetch ok')
+        return state
 
       case MODIFY_PIEZA:
         const {pieza, item} = payload
