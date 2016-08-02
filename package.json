@@ -45,6 +45,9 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "firebase": "^3.2.1",
+    "firebase-saga": "^1.0.17",
+    "lz-string": "^1.4.4",
     "react": "^15.2.1",
     "react-bootstrap": "^0.30.0",
     "react-dom": "^15.2.1",

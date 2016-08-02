@@ -6,7 +6,7 @@ import './index.css'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import createSagaMiddleware from 'redux-saga'
-import { watchFetchData } from './sagas/sagas'
+import rootSaga from './sagas/sagas'
 
 import configurator from './reducers/configurator'
 
@@ -18,7 +18,7 @@ const store = createStore(configurator, compose(
     )
   );
 
-sagaMiddleware.run( watchFetchData )
+sagaMiddleware.run( rootSaga )
 
 ReactDOM.render(
   <Provider store={store}>
@@ -26,4 +26,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-store.dispatch({type: 'INIT_FETCH'})
