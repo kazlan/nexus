@@ -1,7 +1,7 @@
 import { takeEvery } from 'redux-saga'
 import { put, fork } from 'redux-saga/effects'
 import { updateConfig } from '../actions'
-import LZString from 'lz-string'
+//import LZString from 'lz-string'
 
 
 const fetchGithubUser = ()=>{
@@ -17,13 +17,16 @@ function* fetchData(){
     const payload = yield fetchGithubUser()
     yield put({type: "FETCH_OK", payload})
 }
+
+//LOCAL STORAGE
+//   notas: Quito temporalmente el encriptamiento, parece dar problemas 
+//           fuera del entorno local
 function* localStorageSave({payload}){
-    const encoded = LZString.compressToUTF16(JSON.stringify(payload))
-    yield localStorage.setItem('NexusConfig', encoded)
+    yield localStorage.setItem('NexusConfig', JSON.stringify(payload))
         //console.log(LZString.compressToEncodedURIComponent(JSON.stringify(state.config)))
 }
 function* localStorageLoad(){
-    const data = yield JSON.parse(LZString.decompressFromUTF16(localStorage.getItem('NexusConfig')))
+    const data = yield JSON.parse(localStorage.getItem('NexusConfig'))
     yield put(updateConfig(data))
 }
 
