@@ -26,8 +26,11 @@ function* localStorageSave({payload}){
         //console.log(LZString.compressToEncodedURIComponent(JSON.stringify(state.config)))
 }
 function* localStorageLoad(){
+    const item = yield localStorage.getItem('NexusConfig')
+    if ( item ){
     const data = yield JSON.parse(localStorage.getItem('NexusConfig'))
     yield put(updateConfig(data))
+    }
 }
 
 //Watcher sagas
