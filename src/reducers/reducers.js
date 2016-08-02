@@ -46,11 +46,14 @@ export const configurator = (state=initialState, {type, payload})=>{
         return state
 
       case UPDATE_CONFIG:
+        const images = {}
+        Object.keys(payload).map( key=> {
+                images[key] = state.piezas[key]
+                    .filter(x=>x.id===payload[key])[0].img
+              })        
         return Object.assign({}, state, {
           config: payload,
-          imagenes: Object.assign({}, state.imagenes, 
-            Object.keys(payload).map(key=> state.piezas[key].filter(x=>x.id===payload[key])[0].img)
-          )
+          imagenes: images
         })
 
       case MODIFY_PIEZA:

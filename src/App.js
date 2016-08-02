@@ -13,6 +13,7 @@ import './App.css';
 class App extends Component {
 
   componentWillReceiveProps(nextProps) {
+    console.log('willReceive', nextProps.imagenes)
     const { dispatch } = this.props
     dispatch(localStorageSave(nextProps.config))
   }
