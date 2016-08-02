@@ -6,7 +6,7 @@ import Formulario from './components/Formulario'
 import ImageStack from './components/ImageStack' 
 import Precio from './components/Precio'
 
-import { localStorageSave } from './actions/configurator'
+import { localStorageSave, localStorageLoad } from './actions'
 
 import './App.css';
 
@@ -18,7 +18,7 @@ class App extends Component {
   }
   componentDidMount() {
     const { dispatch } = this.props
-    dispatch({type: 'LOCALSTORAGE_LOAD'}) 
+    dispatch(localStorageLoad()) 
   }
   
   render() {

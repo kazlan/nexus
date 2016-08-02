@@ -1,6 +1,6 @@
 import { takeEvery } from 'redux-saga'
 import { put, fork } from 'redux-saga/effects'
-import { updateConfig } from '../actions/configurator'
+import { updateConfig } from '../actions'
 import LZString from 'lz-string'
 
 

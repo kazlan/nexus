@@ -1,4 +1,4 @@
-import { FETCH_OK, MODIFY_PIEZA, UPDATE_CONFIG } from '../actions/configurator'
+import { FETCH_OK, MODIFY_PIEZA, UPDATE_CONFIG } from '../actions'
 
 const initialState = {
       imagenes: {
@@ -38,7 +38,7 @@ const initialState = {
       }
     }
 
-const configurator = (state=initialState, {type, payload})=>{
+export const configurator = (state=initialState, {type, payload})=>{
     switch(type){
 
       case FETCH_OK:
@@ -46,8 +46,12 @@ const configurator = (state=initialState, {type, payload})=>{
         return state
 
       case UPDATE_CONFIG:
-        console.log("update", payload)
-        return Object.assign({}, state, {config: payload})
+        return Object.assign({}, state, {
+          config: payload,
+          imagenes: Object.assign({}, state.imagenes, 
+            Object.keys(payload).map(key=> state.piezas[key].filter(x=>x.id===payload[key])[0].img)
+          )
+        })
 
       case MODIFY_PIEZA:
         const {pieza, item} = payload
@@ -61,4 +65,3 @@ const configurator = (state=initialState, {type, payload})=>{
           return state
     }
 }
-export default configurator

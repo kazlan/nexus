@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {FormControl, FormGroup, ControlLabel} from 'react-bootstrap'
-import { modify_pieza } from '../actions/configurator'
+import { modify_pieza } from '../actions'
 
 const  mapStateToProps = (state)=>{
     return {
