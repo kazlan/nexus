@@ -14,7 +14,7 @@ const sagaMiddleware = createSagaMiddleware()
 
 const store = createStore(configurator, compose(
     applyMiddleware(sagaMiddleware),
-    //window.devToolsExtension && window.devToolsExtension())
+    window.devToolsExtension ? window.devToolsExtension() : f=> f
     )
   );
 
