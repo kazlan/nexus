@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
+import Configurator from './Configurator'
+
+import { Router, Route, Link, browserHistory } from 'react-router'
 import './index.css'
 
 import { Provider } from 'react-redux'
@@ -22,7 +24,9 @@ sagaMiddleware.run( rootSaga )
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router history={browserHistory}>
+      <Route path="/" component={Configurator} />    
+    </Router>
   </Provider>,
   document.getElementById('root')
 );
