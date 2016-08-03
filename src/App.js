@@ -13,13 +13,16 @@ import './App.css';
 class App extends Component {
 
   componentWillReceiveProps(nextProps) {
-    console.log('willReceive', nextProps.imagenes)
-    const { dispatch } = this.props
-    dispatch(localStorageSave(nextProps.config))
+    if (localStorage !== undefined){
+      const { dispatch } = this.props
+      dispatch(localStorageSave(nextProps.config))
+    }
   }
   componentDidMount() {
-    const { dispatch } = this.props
-    dispatch(localStorageLoad()) 
+    if (localStorage !== undefined){
+      const { dispatch } = this.props
+      dispatch(localStorageLoad()) 
+    }
   }
   
   render() {

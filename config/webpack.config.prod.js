@@ -17,6 +17,7 @@ module.exports = {
   bail: true,
   devtool: 'source-map',
   entry: [
+    'babel-polyfill',
     require.resolve('./polyfills'),
     path.join(paths.appSrc, 'index')
   ],
@@ -37,7 +38,6 @@ module.exports = {
       // if we don't have a good solution, we should just make `babel-runtime`
       // a dependency in generated projects.
       // See https://github.com/facebookincubator/create-react-app/issues/255
-      'babel-runtime/regenerator': require.resolve('babel-runtime/regenerator')
     }
   },
   resolveLoader: {

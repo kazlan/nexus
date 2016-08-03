@@ -7,10 +7,12 @@ var paths = require('./paths');
 module.exports = {
   devtool: 'eval',
   entry: [
+    'babel-polyfill',
     require.resolve('webpack-dev-server/client'),
     require.resolve('webpack/hot/dev-server'),
     require.resolve('./polyfills'),
     path.join(paths.appSrc, 'index')
+    
   ],
   output: {
     // Next line is not used in dev but WebpackDevServer crashes without it:
@@ -30,7 +32,6 @@ module.exports = {
       // if we don't have a good solution, we should just make `babel-runtime`
       // a dependency in generated projects.
       // See https://github.com/facebookincubator/create-react-app/issues/255
-      'babel-runtime/regenerator': require.resolve('babel-runtime/regenerator')
     }
   },
   resolveLoader: {

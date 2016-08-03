@@ -50,6 +50,7 @@ export const configurator = (state=initialState, {type, payload})=>{
         Object.keys(payload).map( key=> {
                 images[key] = state.piezas[key]
                     .filter(x=>x.id===payload[key])[0].img
+                    return true
               })        
         return Object.assign({}, state, {
           config: payload,
